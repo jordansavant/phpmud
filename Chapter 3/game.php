@@ -1,8 +1,11 @@
 <?php
 
 /**
- * 1. Classes and objects
- * 2. Switch statements
+ * 1. New function that uses a built in PHP function
+ * 2. While loops
+ * 3. How to read a terminal line and keep it historically
+ * 4. If / Else block
+ * 5. Exiting the script
  */
 
 function printMessage($message)
@@ -15,77 +18,29 @@ function clearScreen()
     printMessage(str_repeat("\n", 100));
 }
 
-class Character
-{
-    public function __construct($name)
-    {
-        $this->health = 100;
-        $this->strength = 30;
-        $this->name = $name;
-    }
-
-    public $name;
-    public $health;
-    public $strength;
-
-    public function attack(Character $enemy)
-    {
-    }
-
-    public function harm(Character $character, $amount)
-    {
-    }
-
-    private function passAway()
-    {
-    }
-}
-
-
 clearScreen();
 printMessage("---------------------------------");
 printMessage("Welcome to the dungeons of dread!");
 printMessage("---------------------------------");
 
-
-$character = null;
 while(true)
 {
     //  Get command
     $line = readline("What would you like to do? ");
-    readline_add_history($line);
     $line = trim($line);
+
+    // Add to history for convenience of Up arrow
+    readline_add_history($line);
 
     sleep(1);
 
-    switch($line)
+    if($line == 'quit')
     {
-        case 'quit':
-            exit();
-            break;
-
-        case 'create':
-
-            $character = new Character('Player');
-            printMessage("Player created");
-
-            break;
-
-        default:
-        case 'about':
-
-            if($character instanceof Character)
-            {
-                printMessage("Name: $character->name");
-                printMessage("Health: $character->health");
-                printMessage("Strength: $character->strength");
-            }
-            else
-            {
-                printMessage("Player has not been created");
-            }
-
-            break;
-
+        exit();
+    }
+    else
+    {
+        printMessage($line);
     }
 }
+

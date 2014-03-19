@@ -1,10 +1,8 @@
 <?php
 
-/*
- * 1. Inheritence and Polymorphism
- * 2. rand()
- * 3. Added logic to class methods
- * 4. Switch while to be variable based
+/**
+ * 1. Classes and objects
+ * 2. Switch statements
  */
 
 function printMessage($message)
@@ -15,26 +13,6 @@ function printMessage($message)
 function clearScreen()
 {
     printMessage(str_repeat("\n", 100));
-}
-
-class Player extends Character
-{
-    public function __construct()
-    {
-        parent::__construct("Player");
-    }
-}
-
-
-class Enemy extends Character
-{
-    public function __construct($name)
-    {
-        parent::__construct($name);
-
-        $this->strength = 10 + rand(0, 20);
-        $this->health = 50 + rand(0, 80);
-    }
 }
 
 class Character
@@ -52,26 +30,16 @@ class Character
 
     public function attack(Character $enemy)
     {
-        printMessage("$this->name attacks $enemy->name for $this->strength");
-        $enemy->harm($this, $this->strength);
     }
 
     public function harm(Character $character, $amount)
     {
-        $this->health -= $amount;
-
-        if($this->health <= 0)
-        {
-            $this->passAway();
-        }
     }
 
     private function passAway()
     {
-        printMessage("$this->name dies");
     }
 }
-
 
 
 clearScreen();
@@ -79,20 +47,10 @@ printMessage("---------------------------------");
 printMessage("Welcome to the dungeons of dread!");
 printMessage("---------------------------------");
 
-$player = new Player();
-$enemy = new Enemy('Orc');
 
-$gameOver = false;
-while(!$gameOver)
+$character = null;
+while(true)
 {
-    // Explain world
-    printMessage("");
-    printMessage("Your condition...\n  Health: $player->health\n  Strength: $player->strength");
-    printMessage("You see...");
-    printMessage("  Enemy $enemy->name with health $enemy->health and strength $enemy->strength");
-    printMessage("");
-
-
     //  Get command
     $line = readline("What would you like to do? ");
     readline_add_history($line);
@@ -106,33 +64,28 @@ while(!$gameOver)
             exit();
             break;
 
-        case 'attack':
+        case 'create':
 
-            $player->attack($enemy);
+            $character = new Character('Player');
+            printMessage("Player created");
 
             break;
-    }
 
+        default:
+        case 'about':
 
-    // Process enemies
-    sleep(1);
-    if($enemy->health > 0)
-    {
-        $enemy->attack($player);
-    }
-    else
-    {
-        printMessage("You are victorious and gain much treasure!");
-        $gameOver = true;
-    }
+            if($character instanceof Character)
+            {
+                printMessage("Name: $character->name");
+                printMessage("Health: $character->health");
+                printMessage("Strength: $character->strength");
+            }
+            else
+            {
+                printMessage("Player has not been created");
+            }
 
-    if($player->health <= 0)
-    {
-        printMessage("Your fateful day as an adventurer has come...");
-        $gameOver = true;
+            break;
+
     }
 }
-
-printMessage("---------------------------------");
-printMessage("          Game Over              ");
-printMessage("---------------------------------");
