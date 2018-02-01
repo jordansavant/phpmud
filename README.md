@@ -50,7 +50,10 @@ Some concepts we will explore:
 ## Act 2
 
 ### Chapter 7: Organizing Files
+1. Moving code to its own files
+2. Learning include, require and require_once
 
 ### Chapter 8: Autoloading Classes
+1. Organizing our code in folders
+2. Autoloading our classes
 
-### TBD 
