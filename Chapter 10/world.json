@@ -1,0 +1,19 @@
+{
+    "rooms": [
+        {
+            "name": "Foyer",
+            "description": "A foyer with marble floors and columns appears before you.",
+            "enemies": [
+                "Golumn",
+                "Wizard"
+            ]
+        },
+        {
+            "name": "Garden",
+            "description": "A garden with wonderful smells and dangerous hosts.",
+            "enemies": [
+                "Snake"
+            ]
+        }
+    ]
+}
