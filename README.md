@@ -10,8 +10,6 @@ Some concepts we will explore:
 4. Code organization, autoloading and frameworks
 5. Web development with front-end and back-end separation
 
-## Act 1
-
 ### Chapter 1: Hello world, Hello functions
 1. How to run a script with PHP
 2. How functions functions are declared.
@@ -47,8 +45,6 @@ Some concepts we will explore:
 3. New randomFloat() function and varying our enemies and float type
 4. unset() variables
 
-## Act 2
-
 ### Chapter 7: Organizing Files
 1. Moving code to its own files
 2. Learning include, require and require_once
@@ -57,3 +53,7 @@ Some concepts we will explore:
 1. Organizing our code in folders
 2. Autoloading our classes
 
+### Chapter 9: Separating Data from Code
+1. Separating our Data from our Code
+2. JSON encoding and decoding
+3. File contents to strings
